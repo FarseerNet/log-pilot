@@ -10,17 +10,16 @@ https://hub.docker.com/r/farseernet/log-pilot
 https://github.com/FarseerNet/log-pilot
 
 ## 使用
-在应用容器中，需要定义env
+首先：在应用容器中，需要定义env
 ```
-aliyun_logs_$Name=stdout
-```
-其中，$Name=elasticsearch index
+aliyun_logs_$Name=stdout  # $Name=elasticsearch index
+aliyun_logs_$Name_format=json # 如果是使用.net程序的朋友，建议使用json方式输出日志格式，借助Farseer.net组件的日志模块：IocManager.Instance.Logger 日志，则默认使用json方式
 
-示例：
+#示例：
+aliyun_logs_farseer=stdout
+aliyun_logs_farseer_format=json
 ```
-aliyun_logs_member=stdout
-```
-## K8S脚本
+## K8S部署yaml文件
 
 ```yaml
 apiVersion: apps/v1
@@ -113,3 +112,9 @@ metadata:
   namespace: default
 type: Opaque
 ```
+> ES的配置在密文log-pilot配置中，请自行修改ES HOST
+ 
+## 最后
+只要成功在K8S中部署好log-pilot，配置好ES HOST，并在您的POD中，定义好env标签。那么log-pilot就开始工具了，可以利用kibana去查看这些信息。
+
+如果使用.net core的朋友，默认使用ILogger组件打印的日志消息并不太友好的显示在ES中（日志内容格式化问题），在这里推荐使用我的另一个开源框架：Farseer.Net。并使用IocManager.Instance.Logger模块进行打印日志（默认配置好适合log-pilot采集所需的格式体）IocManager.Instance.Logger仅是修改了微软日志组件的输出格式，并不依赖第三方组件。
