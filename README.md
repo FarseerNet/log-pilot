@@ -4,6 +4,10 @@
 由于官方不再维护这个版本，只支持到es 6.x。
 本镜像经修改后，支持es 7x的版本。
 
+# 源码、镜像
+https://hub.docker.com/r/farseernet/log-pilot
+https://github.com/FarseerNet/log-pilot
+
 ## 使用
 在应用容器中，需要定义env
 ```
