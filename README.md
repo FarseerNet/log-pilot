@@ -47,7 +47,7 @@ spec:
           effect: NoSchedule
       containers:
         - name: log-pilot
-          image: steden88/log-pilot:7.x
+          image: farseernet/log-pilot:7.x
           imagePullPolicy: IfNotPresent
           resources:
             limits:
