@@ -8,12 +8,14 @@
 在应用容器中，需要定义env
 ```
 aliyun_logs_$Name=stdout
+aliyun_logs_$Name_format=json
 ```
 其中，$Name=elasticsearch index
 
 示例：
 ```
 aliyun_logs_member=stdout
+aliyun_logs_applog_format=json
 ```
 ## K8S脚本
 

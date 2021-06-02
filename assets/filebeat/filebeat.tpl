@@ -41,7 +41,7 @@
   close_renamed: false
   {{range $key, $value := .Tags}}
   {{if eq $key "index"}}
-  {{ $key }}: "{{ $value }}-%{+yyyy.MM.dd}"
+  {{ $key }}: "{{ $value }}_%{+yyyy_MM}"
   {{end}}
   {{end}}
 {{end}}
